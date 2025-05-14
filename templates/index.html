@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Путевые листы</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Система расчёта путевых листов</h1>
+        <div class="menu">
+            <a href="/add_vehicle" class="button">🚗 Добавить автомобиль</a>
+            <a href="/add_norm" class="button">⚙️ Задать нормы расхода</a>
+            <a href="/calculate" class="button">🧮 Рассчитать путёвку</a>
+            <a href="{{ url_for('calculate_month') }}" class="button"🧮> Расчёт за месяц (2 сезона)</a>
+            <a href="/reports" class="button">📄 Посмотреть отчёты</a>
+        </div>
+    </div>
+</body>
+</html>

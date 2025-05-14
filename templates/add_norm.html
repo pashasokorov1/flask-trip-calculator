@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <title>Добавить/изменить нормы</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Добавить или изменить нормы</h1>
+    <form method="post">
+        <p>
+            <select name="vehicle_id" required>
+                {% for vehicle in vehicles %}
+                <option value="{{ vehicle[0] }}">{{ vehicle[1] }} ({{ vehicle[2] }})</option>
+                {% endfor %}
+            </select>
+        </p>
+        <p>
+            <select name="season" required>
+                <option value="summer">Лето</option>
+                <option value="winter">Зима</option>
+            </select>
+        </p>
+        <p><input type="number" step="0.1" name="city" placeholder="Норма (город)" required></p>
+        <p><input type="number" step="0.1" name="highway" placeholder="Норма (трасса)" required></p>
+        <p><input type="number" step="0.1" name="region" placeholder="Норма (район)" required></p>
+        <p><input type="number" step="0.1" name="idle" placeholder="Норма (простой, л/ч)" required></p>
+        <p><input type="submit" value="Сохранить" class="button"></p>
+    </form>
+    <a href="{{ url_for('index') }}" class="button">⬅️ Назад</a>
+</div>
+</body>
+</html>

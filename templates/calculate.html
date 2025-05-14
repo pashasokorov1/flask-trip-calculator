@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %}Калькулятор путевого листа{% endblock %}
+{% block content %}
+<h2>Калькулятор путевого листа</h2>
+
+<form method="post">
+    <label for="vehicle_id">Выберите автомобиль:</label>
+    <select name="vehicle_id" required>
+        {% for vehicle in vehicles %}
+            <option value="{{ vehicle[0] }}">{{ vehicle[1] }} ({{ vehicle[2] }})</option>
+        {% endfor %}
+    </select><br>
+
+    <label for="season">Сезон:</label>
+    <select name="season" required>
+        <option value="winter">Зима</option>
+        <option value="summer">Лето</option>
+    </select><br>
+
+    <label>Спидометр на начало:</label>
+    <input type="text" name="odometer_start" placeholder="Напр. 120000.5" required
+           title="Введите значение спидометра. Можно с запятой или точкой."
+           inputmode="decimal" pattern="^[0-9]*[.,]?[0-9]{0,2}$"><br>
+
+    <label>Пробег по району (км):</label>
+    <input type="text" name="region_km" placeholder="Напр. 45.6" required
+           title="Введите километры по району"
+           inputmode="decimal" pattern="^[0-9]*[.,]?[0-9]{0,2}$"><br>
+
+    <label>Пробег по трассе (км):</label>
+    <input type="text" name="highway_km" placeholder="Напр. 123,4" required
+           title="Введите километры по трассе"
+           inputmode="decimal" pattern="^[0-9]*[.,]?[0-9]{0,2}$"><br>
+
+    <label>Пробег по городу (км):</label>
+    <input type="text" name="city_km" placeholder="Напр. 67.89" required
+           title="Введите километры по городу"
+           inputmode="decimal" pattern="^[0-9]*[.,]?[0-9]{0,2}$"><br>
+
+    <label>Простой (часы):</label>
+    <input type="number" name="idle_hours" placeholder="Напр. 1.25" required
+           title="Введите количество часов простоя"
+           inputmode="decimal" pattern="^[0-9]*[.,]?[0-9]{0,2}$"><br>
+
+    <label>Топливо на начало (л):</label>
+    <input type="text" name="fuel_start" placeholder="Напр. 40.0" required
+           title="Введите уровень топлива на начало"
+           inputmode="decimal" pattern="^[0-9]*[.,]?[0-9]{0,2}$"><br>
+
+    <label>Заправка (л):</label>
+    <input type="text" name="fuel_added" placeholder="Напр. 20" required
+           title="Введите количество заправленного топлива"
+           inputmode="decimal" pattern="^[0-9]*[.,]?[0-9]{0,2}$"><br>
+
+    <input type="submit" value="Рассчитать">
+</form>
+
+{% if result %}
+<h3>Результаты расчёта:</h3>
+<ul>
+    <li>Спидометр на начало: {{ result.odometer_start }} км</li>
+    <li>Пробег: район — {{ result.region_km }} км, трасса — {{ result.highway_km }} км, город — {{ result.city_km }} км, простой — {{ result.idle_hours }} ч</li>
+    <li>Нормы: район — {{ result.region_norm }} л/100км, трасса — {{ result.highway_norm }} л/100км, город — {{ result.city_norm }} л/100км, простой — {{ result.idle_norm }} л/ч</li>
+    <li>Расход: район — {{ result.region_fuel }} л, трасса — {{ result.highway_fuel }} л, город — {{ result.city_fuel }} л, простой — {{ result.idle_fuel }} л</li>
+    <li><strong>Общий расход:</strong> {{ result.total_fuel }} л</li>
+    <li>Топливо на начало: {{ result.fuel_start }} л</li>
+    <li>Заправка: {{ result.fuel_added }} л</li>
+    <li><strong>Остаток топлива:</strong> {{ result.fuel_end }} л</li>
+</ul>
+{% endif %}
+
+<a href="{{ url_for('index') }}">⬅️ Назад</a>
+{% endblock %}

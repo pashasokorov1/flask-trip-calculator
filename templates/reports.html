@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+    <title>Отчёты</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Отчёты</h1>
+    {% for report in reports %}
+        <div style="text-align: left; margin-bottom: 20px;">
+            <strong>Авто:</strong> {{ report[1] }} ({{ report[2] }})<br>
+            <strong>Дата:</strong> {{ report[3] }}<br>
+            <strong>Сезон:</strong> {{ report[4] }}<br>
+            <strong>Км город:</strong> {{ report[5] }}<br>
+            <strong>Км трасса:</strong> {{ report[6] }}<br>
+            <strong>Км район:</strong> {{ report[7] }}<br>
+            <strong>Простой (ч):</strong> {{ report[8] }}<br>
+            <strong>Начало:</strong> {{ report[9] }} л<br>
+            <strong>Заправлено:</strong> {{ report[10] }} л<br>
+            <strong>Конец:</strong> {{ report[11] }} л<br>
+        </div>
+        <hr>
+    {% endfor %}
+    <a href="{{ url_for('index') }}" class="button">⬅️ Назад</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Результат расчета</title>
+</head>
+<body>
+    <h2>Результаты расчета:</h2>
+    <ul>
+        <li>Спидометр на начало: {{ result.odometer_start }} км</li>
+        <li>Спидометр на конец: {{ result.odometer_end }} км</li>
+        <li>Расход в городе: {{ result.city_fuel }} л</li>
+        <li>Расход на трассе: {{ result.highway_fuel }} л</li>
+        <li>Расход в районе: {{ result.region_fuel }} л</li>
+        <li>Простой: {{ result.idle_fuel }} л</li>
+        <li><strong>Общий расход: {{ result.total_fuel_used }} л</strong></li>
+        <li>Топливо на начало: {{ result.fuel_start }} л</li>
+        <li>Заправлено: {{ result.fuel_added }} л</li>
+        <li><strong>Остаток топлива: {{ result.fuel_end }} л</strong></li>
+    </ul>
+
+    <a href="{{ url_for('index') }}">Вернуться в меню</a>
+</body>
+</html>

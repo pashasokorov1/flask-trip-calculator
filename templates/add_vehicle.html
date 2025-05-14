@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+    <title>Добавить авто</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Добавить автомобиль</h1>
+    <form method="post">
+        <p><input type="text" name="number" placeholder="Номер авто" required title="Введите номер автомобиля (например, A123BC)" maxlength="20"></p>
+        <p><input type="text" name="model" placeholder="Модель авто" required title="Введите модель автомобиля (например, Газель)" maxlength="50"></p>
+
+        <h3>Нормы расхода (лето)</h3>
+        <p><input type="text" name="summer_city" placeholder="Город (л/100км)" required title="Введите расход в городе (летом), например: 12.5" pattern="[0-9]+([.,][0-9]{1,2})?" inputmode="decimal"></p>
+        <p><input type="text" name="summer_highway" placeholder="Трасса (л/100км)" required title="Введите расход на трассе (летом), например: 10.0" pattern="[0-9]+([.,][0-9]{1,2})?" inputmode="decimal"></p>
+        <p><input type="text" name="summer_region" placeholder="Район (л/100км)" required title="Введите расход в районе (летом), например: 11.3" pattern="[0-9]+([.,][0-9]{1,2})?" inputmode="decimal"></p>
+        <p><input type="text" name="summer_idle" placeholder="Простой (л/час)" required title="Введите расход в час простоя (летом), например: 1.2" pattern="[0-9]+([.,][0-9]{1,2})?" inputmode="decimal"></p>
+
+        <h3>Нормы расхода (зима)</h3>
+        <p><input type="text" name="winter_city" placeholder="Город (л/100км)" required title="Введите расход в городе (зимой), например: 13.7" pattern="[0-9]+([.,][0-9]{1,2})?" inputmode="decimal"></p>
+        <p><input type="text" name="winter_highway" placeholder="Трасса (л/100км)" required title="Введите расход на трассе (зимой), например: 11.4" pattern="[0-9]+([.,][0-9]{1,2})?" inputmode="decimal"></p>
+        <p><input type="text" name="winter_region" placeholder="Район (л/100км)" required title="Введите расход в районе (зимой), например: 12.2" pattern="[0-9]+([.,][0-9]{1,2})?" inputmode="decimal"></p>
+        <p><input type="text" name="winter_idle" placeholder="Простой (л/час)" required title="Введите расход в час простоя (зимой), например: 1.5" pattern="[0-9]+([.,][0-9]{1,2})?" inputmode="decimal"></p>
+
+        <p><input type="submit" value="Добавить" class="button"></p>
+    </form>
+
+    <a href="{{ url_for('index') }}" class="button">⬅️ Назад</a>
+</div>
+</body>
+</html>

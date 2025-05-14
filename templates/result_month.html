@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Результат расчёта за месяц{% endblock %}
+{% block content %}
+<h2>Результат расчёта за месяц (2 сезона)</h2>
+
+<p><strong>Машина ID:</strong> {{ vehicle_id }}</p>
+
+<h4>Первая часть месяца ({{ season1 }})</h4>
+<ul>
+  <li>Расход: {{ total1 }} л</li>
+</ul>
+
+<h4>Вторая часть месяца ({{ season2 }})</h4>
+<ul>
+  <li>Расход: {{ total2 }} л</li>
+</ul>
+
+<h4>Общий итог</h4>
+<ul>
+  <li>Общий расход: {{ total_fuel }} л</li>
+  <li>Бак на начало: {{ fuel_start }} л</li>
+  <li>Заправка: {{ fuel_added }} л</li>
+  <li><strong>Остаток топлива:</strong> {{ fuel_end }} л</li>
+</ul>
+
+<a href="{{ url_for('index') }}" class="btn btn-secondary">Назад</a>
+{% endblock %}
